@@ -28,7 +28,7 @@
 	 (__ (when debug (print 'pass:desugar)))
 	 (toplevel-info (make-stack stdlib))
 	 (header-info (make-stack '()))
-	 (defs (desugar-top expr "" toplevel-info header-info))
+	 (defs (desugar-top expr debug "eval" toplevel-info header-info))
 	 (__ (when debug (pretty-print (stack-top toplevel-info))))
 	 (__ (when debug (for-each pretty-print defs)))
 	 (__ (when debug (newline)))

@@ -119,7 +119,7 @@
 	   (loop (car def-head) (list `(lambda ,(cdr def-head) . ,def-body))))
 	  (else (print def) (error 'desugar-def "bad definition head" def)))))
 
-(define (desugar-top top filename stk hstk)
+(define (desugar-top top debug filename stk hstk)
   ;; at the top level we will see either
   ;; (include <filename>)
   ;; (define <name> <body> ...)
@@ -129,16 +129,23 @@
 	     '()
 	     (let ((filename (cadr top)))
 	       (stack-push! include-stack filename)
-	       (concatenate (mapply desugar-top (read-file filename) filename stk hstk)))))
+	       (concatenate (mapply desugar-top (read-file filename) debug filename stk hstk)))))
 
 	((head? 'define top '())
+(when debug
+ (print `(desugaring def ,top)))
 	 (list (desugar-def top filename stk hstk)))
 
 	((head? 'defmacro top '())
+(when debug
+ (print `(loading macro ,top)))
 	 (load-macro top)
          '())
 
-	(else (list `(raw ,filename ,(desugar top '()))))))
+	(else
+(when debug
+ (print `(desugaring raw ,top)))
+(list `(raw ,filename ,(desugar top '()))))))
 
 ;;
 
