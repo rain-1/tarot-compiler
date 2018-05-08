@@ -16,6 +16,7 @@
 (char? "<std>" 1)
 (boolean? "<std>" 1)
 (number? "<std>" 1)
+(procedure? "<std>" 1)
 
 (%display "<std>" 2)
 (%newline "<std>" 1)
