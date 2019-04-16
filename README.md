@@ -2,7 +2,7 @@
 
 Tarot is a scheme compiler written in scheme that runs on top of a virtual machine written in C.
 
-My aim with tarot was to make a scheme implementation that was capable of building itself as well as being implement in a clear and concise way. Basically it was a learning project and there are much better and more complete implementations of scheme out there. After I completed it, I also wanted to make it bootstrappable instead of just being self hosted. I achieved this using the tinyscheme interpreter.
+My aim with tarot was to make a scheme implementation that was capable of building itself as well as being implemented in a clear and concise way. Basically it was a learning project and there are much better and more complete implementations of scheme out there. After I completed it, I also wanted to make it bootstrappable instead of just being self hosted. I achieved this using the tinyscheme interpreter.
 
 # use
 
